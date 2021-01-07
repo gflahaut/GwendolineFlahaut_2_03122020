@@ -794,7 +794,7 @@ footer a:hover{
         margin-bottom: 1vh;
     }
     .filtres{
-        grid-template-columns: 60% 60%;
+        grid-template-columns: 60% 38%;
         margin-bottom: 1.09vw;
         margin-top: 2em;
         grid-column-gap: 0.5em;
