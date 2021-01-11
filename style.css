@@ -16,7 +16,7 @@ header{
     grid-template-columns: 4fr 1fr 1fr 1fr;
     grid-template-rows: 100%;
 }
-header,section#container,section#hebergements,section#Activites{
+header,section#container{
     padding-left: 2vw;
     padding-right: 2vw;
 }
@@ -67,29 +67,24 @@ header,section#container,section#hebergements,section#Activites{
 .bold{
     font-weight: bold;
 }
-.localisation
-{
+.localisation{
     font-weight: bold;
     font-size: 1.2rem!important;
-    margin-bottom: 7vh;
+    margin-bottom: 4vh;
+    height: 50px;
+    display: inline-flex;
 }
-.fa, .fas {
+.localisation::before{
+    font-family: "Font Awesome 5 Free";
+    color: #000;
     font-weight: 900;
+    content: "\f3c5";
     background-color: #F2F2F2;
+    border: 1px solid #F2F2F2;
     border-radius: 1rem 0 0 1rem;
-    text-align: center;
-    padding: 1vh;
-}
-i.fas.fa-map-marker-alt{
-    background-color: #F2F2F2;
-    padding: 1.65vh;
+    padding: 1.5vh 1vw;
 }
 #v_cp{
-    height: 5.55vh;
-    position: relative;
-    left: -0.4vw;
-    bottom: 0.2vh;
-    padding-left: 1vw;
     font-size:1.2rem; 
     border: 1px solid #f2f2f2; 
 }
@@ -133,15 +128,17 @@ button#mobile{
     background-color: #0065FC;
     border: 1px solid #0065FC;
     font-weight: bold;
-    border: none;
     border-radius: 0 1rem 1rem 0;
     padding: 1.5vh 1vw;
     font-family: "Raleway", "Sans serif";
     font-size: 1.16rem!important;
     cursor: pointer;
-    position: relative;
-    left: -0.8vw;
-    bottom: 0.1vh;
+}
+.search::before{
+    font-family: "Raleway", "Sans serif";
+    color: #f2f2f2;
+    font-weight: bold;
+    content: "Rechercher";
 }
 .filtres{
     display: grid;
@@ -149,47 +146,59 @@ button#mobile{
     column-gap: 1em ;
     grid-template-rows: 5% ;
     margin-bottom: 1.5vh;
-}
-.filtres div {
     -webkit-transform : scale(1);
     transform: scale(1);
     -webkit-transition : .3s ease-in-out;
     transition: .3s ease-in-out;
 }
- .filtres div i, .filtres div p{
-    display:inline-block;
-    position: relative; 
-    top: -1.2em;
+.filtres div:hover{
+    text-decoration:none;
+    -webkit-transform : scale (0;75);
+    transform: scale(0;75);
+
 }
 #eco,#famille,#romantique,#animaux{
     border-radius: 30px;
     border: 1px solid #F2F2F2;
-    height: 3.95vh;
-    position: relative;
-    top: 0em;
-    margin-right: 0em;
+    display: grid;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+    grid-template-columns: 20% 80%;
+    height: 5vh;
 }
-.filtres div i {
-    background-color: #DEEBFF ;
+div#eco::before,div#famille::before,div#romantique::before,div#animaux::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: bold;
+    background-color: #DEEBFF;
     color: #0065FC;
     border-radius: 50px;
 }
-.filtres div p {
-    padding: 1vh 0;
-    position: relative;
-    left: -0.5vw;
-    padding-left: 1vw;
-    border-radius: 5px;
+div#eco::before,div#famille::before,div#romantique::before{
+    padding: 10px;
 }
-.filtres div:hover{
-    text-decoration:none;
-    -webkit-transform : scale (1.1);
-    transform: scale(1.1);
+div#eco::before{
+    content: "\f53a";
 }
-#txt-filtre{
-    position: relative;
-    right: -1.4vh;
-    top: 1vh;
+div#famille::before{
+    content: "\f1ae";
+}
+div#romantique::before{
+    content: "\f004";
+}
+div#animaux::before{
+    content: "\f6d3";
+    padding: 9.5px;
+    width: 20px;
+    height: 20px;
+}
+.filtres div .bold{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 .info{
     display: flex;
@@ -232,22 +241,30 @@ i.fas.fa-star.blue{
     color: #0065FC;
 }
 i.fas.fa-star.grey{
-    color:grey;
+    color:#F2F2F2;
+}
+#hebergements{
+    display: grid;
+    grid-template-columns: 6fr 3fr;
+    grid-column-gap: 1vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
 }
 #containerHebergements{
     background-color: #F2F2F2;
     display: grid;
-    grid-template-columns : 2fr 2fr 2fr;
+    grid-template-columns: auto auto auto;
     grid-template-rows: 0.2fr 0.2fr 0.2fr 0.2fr;
-    grid-column-gap: 2em;
-    grid-row-gap: 2em;
-    margin-inline-end: 4vh;
+    column-gap: 1em;
+    row-gap: 1em;
     border-radius: 1rem;
-    padding: 1em;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }
 #containerHebergements h4{
     grid-row-start: 1;
     grid-column: span 3;
+    font-size: 1.17em;
 }
 #containerHebergements a{ 
     color: inherit;
@@ -260,86 +277,83 @@ i.fas.fa-star.grey{
 #containerHebergements a:hover{
     -webkit-transform: scale(0.75);
     transform: scale(0.75);
+
 }
 #containerHebergements img{
     height: 8rem;
-    width: 16rem;
+    width: 18rem;
     object-fit: cover;
     border-radius: 1rem 1rem 0 0;
 }
-#containerHebergements p{
+#containerHebergements span{
     display: inline-block;
     font-size: 1em;
     margin-block-start: 0.5em;
     margin-block-end: 0.5em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
 }
-#hebergements{
-    display: grid;
-    grid-template-columns: 7fr 3fr;
-    grid-column-gap:0.2fr;
+#containerHebergements figcaption, #containerHebergements span:first-of-type, #containerHebergements span:last-of-type{
+    margin-inline-start: 15.5px;
 }
 .cartesHebergements{
     background-color: white;
-    width: 16em;
+    width: auto;
     border-radius: 1rem;
     padding-bottom: 1vh;
-    border: 5px solid white;
+    border: 2.5px solid white;
     box-shadow: 0 0 16px #0000002e;
     text-align: left;
+    margin: auto;
 }
 /* Populaires  */
 #containerPopulaires p{
-    font-size: 1em;
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    font-size: 1.05em;
 }
 #containerPopulaires img{
-    height: 8rem;
-    width: 8rem;
+    height: 9rem;
+    width: 8.5rem;
     object-fit: cover;
-    border-radius: 1rem 1rem 0 0;
+    border-radius: 1rem 0 0 1rem;
 }
 #containerPopulaires a{
     text-decoration: none;
-}
-ul{
-    list-style-type: none;
 }
 #containerPopulaires{
     background-color: #F2F2F2;
     border-radius: 1rem;
     display: grid;
-    grid-template-columns : 1fr;
-    grid-template-rows: 0.2fr 0.2fr 0.2fr 0.2fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 1fr 1fr 1fr;
     grid-column-gap: 2em;
-    grid-row-gap: 2em;
-    padding: 1em;
+    grid-row-gap: 1em;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+#containerPopulaires h4{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.17em;
+}
+#containerPopulaires h4::after{
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.17em;
+    font-weight: 900;
+    content:"\f201";
 }
 .cartesPopulaires{
-    height: 8rem;
-    width: 19.5em;
+    height: 9rem;
+    width: auto;
     background-color: white;
     border-radius: 1rem;
-    padding-bottom: 1vh;
-    border: 5px solid white;
+    border: 2.5px solid white;
     display: grid;
     grid-template-columns: 1fr 1fr;
     box-shadow: 0 0 16px #0000002e;
-    font-size: 1rem;
+    font-size: 0.85rem;
 }
 .cartesPopulaires p{
-    display: inline-block;
-}
-i.fas.fa-chart-line{
-    font-weight: bold;
-    margin-left: 9vh;
-    background-color: #F2F2F2;
-}
-#containerPopulaires h4{
+    font-size: 1.05em;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
     display: inline-block;
 }
 #containerPopulaires a{
@@ -352,102 +366,100 @@ i.fas.fa-chart-line{
     -webkit-transform: scale(0.75);
 	transform: scale(0.75);
 }
+#containerPopulaires span:first-of-type{
+    margin-inline-start: 0;
+    margin-block-start: 3.6em;
+    margin-block-end: 0.6em;
+    font-size: 0.85em;
+    white-space: pre;
+    display: flex;
+    flex-direction: row;
+}
 /* Activités  */
-#containerActivites a{
-    text-decoration: none;
+#Activites{
+    padding-bottom: 10vh;
+}
+.titleA{
+    margin-inline-start: 1vw;
+    font-size: 1.17em;
 }
 #containerActivites{
     display: grid;
-    grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr;
-    grid-template-rows: auto 0.5fr;
-    grid-column-gap: 2em;
-    grid-row-gap: 2em;
-    grid-auto-flow: row;
-    padding-bottom: 5vh;
+    grid-template-columns: repeat(4,24.4%);
+    grid-template-rows: repeat(4,20%);
+    column-gap: 0.5em;
 }
-#containerActivites h4, div#titleA{
-    grid-row-start: 1;
-    grid-column: 1 / span 4;
+#containerActivites a{
+    width: 18rem;
+    object-fit: contain;
 }
-#containerActivites img{
+#A1, #A4{
+    height: 28.6rem;
+}
+#A2, #A3, #A5, #A6{
+    height: 9.5rem;
+}
+#containerActivites figure{
+    border-radius: 1rem;
+    padding-bottom: 1vh;
+    border-bottom: 30px solid white;
+    box-shadow: 0 0 16px #0000002e;
+    background-color: white;
+    object-fit: contain;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 1vw;
+    margin-inline-end: 1vw;
+}
+figcaption{
+    padding-bottom: 1vh;
+    margin-inline-start: 1em;
+    margin-inline-end: 0em;
+}
+#A1,#A2,#A3,#A4,#A5,#A6{
+    width: 20rem;
     object-fit: cover;
-    border-radius: 1rem 1rem 0 0;
 }
-#containerActivites p{
-    padding: 0.1vh;
-}
-#A1{
+a.Act1{
     grid-column: 1;
-    grid-row: 2 / 3;
+    grid-row: 1 / span 4;
+    height: 32rem;
+    object-fit: cover;
+
 }
-#A2{
+a.Act2{
     grid-column:2;
-    grid-row: 2;
+    grid-row: 1;
+    height: 9.5rem;
 }
-#A3{
+a.Act3{
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 4;
+    height: 9.5rem;
 }
-#A4{
+a.Act4{
     grid-column: 3;
-    grid-row: 2 / 3;
+    grid-row: 1 / span 4;
+    height: 32rem; 
 }
-#A5{
+a.Act5{
     grid-column: 4;
-    grid-row: 2;
+    grid-row: 1;
+    height: 9.5rem;
 }
-#A6{
+a.Act6{
     grid-column: 4;
-    grid-row: 3;
+    grid-row: 4;
+    height: 9.5rem;
 }
-.bigActivity{
-    height: 26rem;
+#containerActivites a img{
+    object-fit: cover;
+    height: inherit;
+    border-radius: 1rem 1rem 0 0;
     width: 20rem;
 }
-.smallActivity{
-    height: 9rem;
-    width: 18rem;
-}
-#A2,#A5,#A6{
-    background-color: white;
-    width: 18rem;
-    border-radius: 1rem;
-    padding-bottom: 1vh;
-    border-bottom: 5px solid white;
-    box-shadow: 0 0 16px #0000002e;
-}
-#A1,#A4{
-    background-color: white;
-    width: 20rem;
-    border-radius: 1rem;
-    padding-bottom: 1vh;
-    border-bottom: 5px solid white;
-    box-shadow: 0 0 16px #0000002e;
-}
-.activitySmall{
-    display: grid;
-    grid-template-columns : auto;
-    grid-template-rows: auto auto;
-    grid-column-gap: 1em;
-    grid-row-gap: 2.5em;
-}
-#A3 img{
-    height:7rem;
-}
-div#A3 {
-    background-color: white;
-    width: 18rem;
-    border-radius: 1rem;
-    padding-bottom: 0.37vw;
-    border-bottom: 5px solid white;
-    box-shadow: 0 0 16px #0000002e;
-    margin-top: 5.5vh;    
-}
-div#A3 p{
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+ #containerActivites a{
+    text-decoration: none;
 }
 #containerActivites a{
 	-webkit-transform: scale(1);
@@ -468,7 +480,6 @@ footer{
     right: 0;
     bottom: 0;
     left: 0;
-    clear: both;
 }
 footer a{
     text-decoration:none;
@@ -485,12 +496,15 @@ footer a:hover{
     }
     body{
         margin: 0;
+        padding: 0;
     }
     header{
         display: grid;
         grid-template-columns: 50% repeat(3, 16%);
         grid-template-rows: 100%;
         font-size: small;
+        padding-left: 2vw;
+        padding-right: 5vw;
     }
     #logo{
         grid-column-start: 1;
@@ -502,65 +516,60 @@ footer a:hover{
         grid-column-start: 2;
         grid-row-start: 1;
     }
+    section#container{
+        margin-bottom: 0;
+        padding-right: 4vw;
+        padding-left: 4vw;
+    }
     #container h2{
         font-size: 1em;
         margin-block-start: 2em;
         margin-block-end: 2em;
     }
-    i.fas.fa-map-marker-alt {
-        padding: 1.5vh;
-        background-color: #F2F2F2;
+    .localisation{
+        margin-bottom: 1vh;
+        height: 50px;
     }
     input#v_cp{
         height: auto;
-        width:25%;
+        width:auto;
         position: relative;
-        left: 0;
-        bottom: 0;
-        padding-left: 1.52vh;
-        border: none;
+        border-top: 1px solid #F2F2F2;
+        border-bottom: 1px solid #F2F2F2;
+        font-size: 1rem;
     }
-    section#container{
-        padding-left: 3.04vh;
-        margin-bottom: 1em;
-    }
-    section#container p{
-        margin-block-start: 1em;
-        margin-block-end: 2em;
-    }
-    button#desktop{
-        display:none;
-    }
-    button#mobile{
-        display: inline-block;
-        border-radius: 3rem;
-        padding: 0.5vh 0.5vw;
-    }
-    i.fas.fa-search{
-        background:none;
-    }
-    .localisation{
-        margin-bottom: 1vh;
+    .search::before {
+        font-family: "Font Awesome 5 Free";
+        color: #F2F2F2;
+        font-weight: bold;
+        content: "\f002";
     }
     .filtres{
         margin-block-start: 2em;
         margin-block-end: 2em;
-        grid-template-columns: 10% 20% 15% 19% 25%;;
+        grid-template-columns: 6% 19% 19% 19% 27%;
         grid-template-rows: 100%;
-        column-gap: 0;
-        margin-bottom: 0;
-        display: grid;
-        font-size: small;
+        grid-column-gap: 1em;
+        font-size: smaller;
+    }
+    #txt-filtre{
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
+    .filtres p{
+        margin-block-start: 0;
+        margin-block-end: 0;
     }
     div#eco{
         grid-row-start: 1;
         grid-column-start: 2;
     }
+    #eco, #famille, #romantique, #animaux {
+        height: 3vh;
+    }
     div#famille{
         grid-row-start: 1;
         grid-column-start: 3;
-        position: relative;
-        left:0;
     }
     div#romantique{
         grid-row-start: 1;
@@ -570,12 +579,16 @@ footer a:hover{
         grid-row-start: 1;
         grid-column-start: 5;
     }
-    #eco, #famille, #romantique, #animaux {
-        border-radius: unset;
-        border: none;
-        height: auto;
-        top: 0;
-        margin-right: 0;
+    div#animaux::before{
+        padding: 9.5px;
+        width: 14px;
+        height: 14px;
+    }
+    div#famille::before, div#romantique::before {
+        padding: 7px;
+    }
+    div#eco::before{
+        padding: 6.7px;
     }
     section#container .info p{
         padding: 0;
@@ -585,10 +598,7 @@ footer a:hover{
         margin-block-end: 0;
         margin-inline-start: 1em;
     }
-    #txt-filtre{
-        grid-column-start: 1;
-        grid-row-start: 1;
-    }
+    
     .info{
         margin: 0.5rem 0 1rem 0;
     }
@@ -613,52 +623,66 @@ footer a:hover{
         grid-column-start: 1;
         grid-template-columns: repeat(3,30%);
         grid-template-rows: 5% repeat(2, 32%) 5%;
-        grid-column-gap: 2.5em;
-        grid-row-gap: 2.5em;
+        grid-column-gap: 1em;
+        grid-row-gap: 1.9em;
         border-radius: 1rem;
     }
     #containerHebergements h4{
         grid-column-start: 1;
         grid-column: span 3;
+        margin-block-end: 2vw;
     }
     #containerHebergements a.bold{
         grid-column-start: 2;
         grid-row-start: 4;
     }
-    #containerHebergements a.bold h4{
-        padding: 0.5em;
-        margin-block-start: 0;
-        margin-block-end: 0;
-        position: relative;
-        top: -2vh;
-        margin-inline-start: 2em;
+    #containerHebergements h4{
+        padding: 2vw;
+        margin-inline-start: 2vw;
+    }
+    #containerHebergements a{
+        padding: 2vw;
+        margin-inline-start: 2vw;
     }
     #containerHebergements a:hover {
         -webkit-transform: none;
         transform: none;
     }
+    #containerHebergements span{
+        font-size: 0.9em;
+        margin-block-start: 0.2em;
+        margin-block-end: 0.2em;
+    }
+    #containerHebergements figcaption{
+        padding-bottom: 0;
+    }
     .cartesHebergements{
-        width: 12em;
+        width: 12.5em;
+        height: 10em;
     }
     #containerHebergements img, .cartesHebergements img{
-        width: 12rem;
-        height: 6rem;
+        width: 12.5em;
+        height: 6em;
+    }
+    #containerPopulaires h4::after { 
+        justify-content: normal;
+        margin-left: 10px;
     }
     #containerPopulaires{
-        width: 95%;
+        width: 100%;
         display: grid;
-        grid-template-columns: repeat(3, 30%);
+        grid-template-columns: repeat(3, 28%);
         grid-template-rows: 10% 65%;
-        gap: 2em;
-        grid-column-gap: 2.5em;
-        position: relative;
-    }
+        grid-row-gap: 2.5em
+    }    
     #containerPopulaires img {
         height: 6em;
-        width: 12em;
+        width: 14.5em;
         padding: 0;
+        border-radius: 1rem 1rem 0 0;
     }
     #containerPopulaires .titre{
+        display: flex;
         grid-column-start: 1;
         grid-column: span 3;
         grid-row-start: 1;
@@ -667,71 +691,89 @@ footer a:hover{
         -webkit-transform: none;
         transform: none;
     }
-    .cartesPopulaires{
-        height: 12em;
-        width: 12em;
-        grid-template-columns: 1fr;
+    #containerPopulaires span{
+        font-size: 0.9em;
     }
-    i.fas.fa-chart-line {
-        margin-left: 0;
-        background: none;
+    #containerPopulaires p:not(:nth-child(2),:nth-child(3)){
+        margin-bottom: 5px;
+    }
+    #containerPopulaires span:first-of-type {
+        margin-block-start: 0em;
+        margin-block-end: 0;
+        padding: 0.5em;
+        white-space: normal;
+        margin-top: -0.8em;
+        margin-inline-start: 2px;
+    }
+    #containerPopulaires p:nth-child(2){
+        display: inline-flex;
+        padding: 0.5em;
+    }
+    #containerPopulaires p:first-of-type{
+        margin-top: 8px;
+        margin-inline-start: 0;
+        padding: 0.5em;
+    } 
+    #containerPopulaires p{
+        font-size: 1.3em;
+        margin-block-start: -1.8em;
+        margin-block-end: 0.2em;
+    }
+    .cartesPopulaires{
+        width: 14.5em;
+        height: 13.5em;
+        grid-template-columns:100%;
+        grid-template-rows: 40% 50%;
     }
     section#Activites{
-        position: relative;
+        width: 99%;
+    }
+    .titleA{
+        margin-inline-start: 3vw;
     }
     #containerActivites{
-        width: 100%;
-        grid-template-columns: auto;
-        grid-template-rows: 5% 10%;
-        grid-column-gap: 1em;
-        grid-row-gap: 0.5em;
-        grid-column-gap: 1em;
+        width: 93%;
+        grid-row-gap: 0.125em;
+        grid-column-gap: 0.125em;
+        grid-template-columns: repeat(4,24%);
+        grid-template-rows: repeat(4,25%);
+        padding-left: 2.5vw;
+    }
+    #containerActivites figure{
+        margin-inline-start: 0.5vw;
+        margin-inline-end: 0.5vw;
     }
     #containerActivites a:hover {
         -webkit-transform: none;
         transform: none;
     }
+    #containerActivites a { 
+        width: 11rem;
+        object-fit: contain;
+    }
+    a.Act1, a.Act4{
+        height: 20rem ;
+    }
+    a.Act2, a.Act3, a.Act5, a.Act6{
+        height: 5rem;
+    }
+    #A1, #A2, #A3, #A4, #A5, #A6{
+        width: 10rem;
+    }
+    #A1, #A2, #A3,#A5, #A6{
+        height: 5rem;
+    }
     #A1,#A4{
-        width:12rem;
+        height: 20rem ;
     }
-    #A2,#A5,#A6{
+    #containerActivites a img{
         width: 10rem;
-    }
-    #A1,#A2,#A3,#A4,#A5,#A6{
-        font-size: x-small;
-    }
-    .bigActivity{
-        height: 16rem;
-        width: 12rem;
-    }
-    .smallActivity{
-        height: 5rem;
-        width:  10rem;
-    }
-    div#A3 {
-        width: 10rem;
-        height: 7.5rem;
-        margin-top:0;
-    }
-    #A3 img{
-        height: 5rem;
-        width:  10rem;
-    }
-    div#titleA{
-        display: flex;
-        align-items: center;
-    }
-    .activitySmall{
-        display: grid;
-        grid-template-columns: 9.5rem;
-        grid-template-rows: 10rem 10rem;
-        grid-column-gap: 1em;
-        grid-row-gap: 1em;
     }
     footer{
-        width: 100%;
-        grid-column-gap: 2em;
-        min-height: 20vh;
+        grid-template-rows: 100%;
+        grid-template-columns: repeat(3,33%);
+        padding-left: 2vw;
+        padding-right: 2vw;
     }
 }
     
@@ -776,48 +818,51 @@ footer a:hover{
     section#container{
         padding-left: 3.04vh;
     }
-    button#desktop{
-        display:none;
-    }
-    button#mobile{
-        display:inline-block;
+    .search{
+        width: 80%;
         border-radius: 1rem;
-        padding: 1vh 1vw;
+        padding: 0.5em;
     }
-    i.fas.fa-search{
-        background-color: #0065FC;
-    }
-    #v_cp{
-        width:50%;
+    .search::before{
+        font-family: "Font Awesome 5 Free";
+        content: "\f002";
+        font-weight: bold;
     }
     .localisation{
         margin-bottom: 1vh;
     }
+    .localisation::before {
+        padding:0.5em;
+    }
+    #v_cp{
+    border-bottom: 1px solid #F2F2F2;
+    border-top: 1px solid #F2F2F2;
+    border-left:none;
+    border-right:none;
+    }    
     .filtres{
-        grid-template-columns: 60% 38%;
+        grid-template-columns: 48% 48%;
+        grid-template-rows: repeat(4,25%);
         margin-bottom: 1.09vw;
         margin-top: 2em;
-        grid-column-gap: 0.5em;
-        grid-row-gap: 1.5em;
+        grid-row-gap: 0.5em;
     }
     div#eco{
         grid-row-start: 2;
         grid-column-start: 1;
-        width: 55vw;
     }
     div#famille{
         grid-row-start: 2;
         grid-column-start: 2;
-        width: 35vw;
     }
     div#romantique{
         grid-row-start: 3;
         grid-column-start: 1;
-        width: 55vw;
     }
     div#animaux{
         grid-row-start: 4;
         grid-column-start: 1;
+        white-space: nowrap;
         width: 55vw;
     }
     .info p{
@@ -858,13 +903,9 @@ footer a:hover{
         width: 9rem;
     }
     #containerPopulaires h4{
-        padding: 0.5em;
-        font-size: x-large;
-        display: block;
-        margin-block-start: 1em;
-        margin-block-end: 0;
-        margin-inline-start: 0;
-        margin-inline-end: 0;
+        padding: 0;
+        margin-left: 8vw;
+        justify-content: space-around;
     }
     i.fas.fa-chart-line{
         float: right;
@@ -895,14 +936,21 @@ footer a:hover{
         margin-inline-end: 0;
         padding: 0;
     }
-    #containerHebergements h4{
+    #containerHebergements h4:first-of-type{
         grid-row-start: 1;
         grid-column: 1;
-        font-size: large;
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0;
-        margin-inline-end: 0;
+        margin-left: 8vw;
+        margin-block-start: 3.33em;
+    }
+    #containerHebergements h4:last-of-type{
+        margin-block-start: 1.33em;
+        margin-block-end: 3.33em;
+        margin-inline-start: 20px;
+        margin-inline-end: 0px; 
+    }
+    #containerHebergements a:last-of-type{
+        margin: 0;
+        padding: 1vw;
     }
     #containerHebergements a{
         margin: auto;
@@ -917,88 +965,73 @@ footer a:hover{
     .cartesHebergements{
         width: 22em;
     }
-    section#Activites{
-        padding-top: 15vw;
-        padding-left: 7.5vw;
-        padding-right: 0;
-    }
-    .smallActivity,.bigActivity{
-        height: 9rem;
-        width: 20rem;
+    .titleA {
+        margin-inline-start: 7vw;
     }
     #containerActivites{
-        grid-template-rows: 0.01fr repeat(6,auto);
-        grid-template-columns: 0.5fr;
-        grid-column-gap: 0;
+        grid-template-rows: repeat(6,1.5fr);
+        grid-template-columns: 100%;
+        grid-column-gap: 0.5em;
         padding-bottom: 0;
     }
-    #containerActivites a {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        -webkit-transition: 0;
-        transition: 0;
-    }
-    #containerActivites a:hover{
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-    div#A3{
-        width: 20rem;
-        height: 13em;
-        padding-bottom: 0;
-        margin-top: 0;
-    }
-    div#A3 p{
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
+    #containerActivites h4{
+        margin-block-start: 1.33em;
+        margin-block-end: 1.33em;
+        margin-inline-start: 20px;
         margin-inline-end: 0px;
     }
-    #A3 img{
-        height: 9rem;
+    #containerActivites a {
+        margin-inline-start: 7vw;
         width: 20rem;
+        height: 12.5rem;
+        -webkit-transform: none;
+        transform: none
     }
-    div#titleA {
+    #containerActivites a:hover{
+        -webkit-transform: none;
+        transform: none;
+    }
+    #containerActivites figure{
+        width: 20rem;
+        height: 9.5rem;
+    }
+    #containerActivites figure img{
+        width: 20rem;
+        height: 8.5rem;
+    }
+    a.Act1{
         grid-row-start: 1;
         grid-column: 1;
     }
-    #containerActivites div{
-        width: 20rem;
-    }
-    #containerActivites img{
-        width: 20rem;
-    }
-    #A1{
+    a.Act2{
         grid-row-start: 2;
+        grid-column: 1;
     }
-    #A2{
+    a.Act3{
         grid-row-start: 3;
-        display: block;
-        grid-template-columns: 0;
-        grid-template-rows: 0;
-        grid-column-gap: 0;
-        grid-row-gap: 0;
+        grid-column: 1;
     }
-    #A3{
+    a.Act4{
         grid-row-start: 4;
-        display: block;
-        grid-template-columns: 0;
-        grid-template-rows: 0;
-        grid-column-gap: 0;
-        grid-row-gap: 0;
+        grid-column: 1;
     }
-    #A4{
-        grid-row-start: 4;
+    a.Act5{
+        grid-row-start: 5;
+        grid-column: 1;
+    }
+    a.Act6{
+        grid-row-start: 6;
+        grid-column: 1;
     }
     footer{
-        display: inline-block;
-        width: 100%;
-        padding-top: 5vw;
-        padding-bottom: 5vw;
+        display: grid;
         padding-left: 0;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 100%;
     }
     footer div {
-        margin-left: 5vw;
+        margin-inline-start: 7vw;
+        font-size: 1.1em;
     }
 }
 /*<----------------------------------------------------------------------------------------------Imac ------------------------------------------------------------------------------------->*/
